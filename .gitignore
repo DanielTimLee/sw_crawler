@@ -1,0 +1,5 @@
+.idea/
+venv/
+app/static/lib/
+*.pyc
+tags

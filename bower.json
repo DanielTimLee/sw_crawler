@@ -1,0 +1,24 @@
+{
+  "name": "sw_crawler",
+  "homepage": "https://github.com/DanielTimLee/sw_crawler",
+  "authors": [
+    "Daniel Tim Lee <danieltimlee@gmail.com>"
+  ],
+  "description": "smtm_crawler",
+  "main": "server.py",
+  "keywords": [
+    "crawler"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "semantic": "semantic-ui#^2.2.4"
+  }
+}
