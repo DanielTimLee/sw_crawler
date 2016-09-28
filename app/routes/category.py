@@ -1,6 +1,7 @@
-from flask import jsonify, request, redirect, url_for
+from flask import jsonify, redirect, url_for, render_template
 
 from app import app, db
+from app.forms.category import CategoryForm
 from app.models.category import CategoryModel
 
 
@@ -22,13 +23,17 @@ def category():
 
 @app.route('/category/add')
 def category_add():
-    # TODO: 폼 생성 + 뷰 구현 + request 처리.
-    new_category = CategoryModel(
-        name=request,
-        title=request.remote_addr
-    )
+    form = CategoryForm()
 
-    db.session.add(new_category)
-    db.session.commit()
+    if form.validate_on_submit():
+        new_category = CategoryModel(
+            name=form.name.data,
+            title=form.title.data,
+        )
 
-    return redirect(url_for('category'))
+        db.session.add(new_category)
+        db.session.commit()
+
+        return redirect(url_for('category'))
+
+    return render_template('category_add.html', form=form)

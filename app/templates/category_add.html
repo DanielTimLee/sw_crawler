@@ -1,0 +1,31 @@
+{% extends 'templates.html' %}
+
+{% block content %}
+  <h1>SMTM 카테고리 추가</h1>
+
+  <div class="ui grid">
+    <div class="row">
+      <div class="column">
+        <form action="{{ request.url }}" method="POST" class="ui form">
+          {{ form.csrf_token }}
+
+          <div class="{% if form.errors['name'] %}error{% endif %} field">
+            <div class="ui transparent huge fluid input">
+              {{ form.name(placeholder="카테고리 name을 입력해주세요. 반드시 영어로 입력해 주십시오.", autofocus="true") }}
+            </div>
+          </div>
+
+          <div class="{% if form.errors['title'] %}error{% endif %} field">
+            <div class="ui transparent huge fluid input">
+              {{ form.title(placeholder="카테고리 title을 입력해주세요") }}
+            </div>
+          </div>
+
+          <button type="submit" class="fluid ui primary button" style="margin:0.5em 0em">제출하기</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
