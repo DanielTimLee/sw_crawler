@@ -1,5 +1,19 @@
 {% extends 'templates.html' %}
 
 {% block content %}
-<h1> HI ! {{ user }} </h1>
+  <a href="{{ url_for('document') }} ">
+    <h1> Document </h1>
+  </a>
+  <a href="{{ url_for('document_add') }} ">
+    <h1> Document ADD </h1>
+  </a>
+  <a href="{{ url_for('category') }} ">
+    <h1> Category </h1>
+  </a>
+  <a href="{{ url_for('category_add') }} ">
+    <h1> Category_add </h1>
+  </a>
+  <a href="{{ url_for('classify') }} ">
+    <h1> Classify </h1>
+  </a>
 {% endblock %}

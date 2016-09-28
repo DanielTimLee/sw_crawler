@@ -11,7 +11,7 @@
 
           <div class="{% if form.errors['username'] %}error{% endif %} field">
             <div class="ui transparent huge fluid input">
-              {{ form.username(placeholder="사용자 이름을 입력해주세요", autofocus="true") }}
+              {{ form.username(placeholder="사용자 이름을 입력해주세요",value="정성영") }}
             </div>
           </div>
 
@@ -19,7 +19,7 @@
             <div class="ui form">
               <div class="field">
                 <label>내용을 입력해주세요</label>
-                {{ form.content(placeholder="내용을 입력해주세요") }}
+                {{ form.content(placeholder="내용을 입력해주세요",autofocus="true") }}
               </div>
             </div>
           </div>

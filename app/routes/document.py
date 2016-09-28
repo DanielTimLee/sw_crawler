@@ -14,7 +14,7 @@ def document():
             'id': document.id,
             'username': document.username,
             'content': document.content,
-            'category': document.category
+            'category': [x for x in str(document.category).split() if len(str(document.category)) > 0]
         })
 
     return jsonify({
@@ -35,6 +35,6 @@ def document_add():
         db.session.add(new_document)
         db.session.commit()
 
-        return redirect(url_for('document'))
+        return redirect(url_for('document_add'))
 
     return render_template('document_add.html', form=form)
