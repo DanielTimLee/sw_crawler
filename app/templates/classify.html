@@ -1,0 +1,29 @@
+{% extends 'templates.html' %}
+
+{% block content %}
+  <h1>SMTM 수동 분류기</h1>
+
+  <div class="ui grid">
+    <div class="row">
+      <div class="eleven wide column">
+        <h3> dasafsdafds</h3>
+      </div>
+      <div class="three wide column">
+
+        <form action="{{ request.url }}" method="POST">
+          <div class="ui checkbox">
+            {% for cat in categories %}
+              <div style="padding:0.3em 0em">
+                <input type="checkbox" id="id_{{ cat.id }}" name="category" value="{{ cat.name }}">
+                <label for="id_{{ cat.id }}">{{ cat.title }}</label>
+              </div>
+            {% endfor %}
+          </div>
+          <button type="submit" class="fluid ui primary button" style="margin:0.5em 0em">제출하기</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
