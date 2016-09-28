@@ -1,6 +1,7 @@
-from flask import jsonify, request, redirect, url_for
+from flask import jsonify, redirect, url_for, render_template
 
 from app import app, db
+from app.forms.document import DocumentForm
 from app.models.document import DocumentModel
 
 
@@ -11,8 +12,7 @@ def document():
     for document in documents:
         document_list.append({
             'id': document.id,
-            'username': document.name,
-            'title': document.title,
+            'username': document.username,
             'content': document.content,
             'category': document.category
         })
@@ -22,16 +22,19 @@ def document():
     })
 
 
-@app.route('/document/add')
+@app.route('/document/add', methods=['GET', 'POST'])
 def document_add():
-    # TODO: 폼 생성 + 뷰 구현 + request 처리.
-    new_document = DocumentModel(
-        username=request,
-        title=request.remote_addr,
-        content=request.document,
-    )
+    form = DocumentForm()
 
-    db.session.add(new_document)
-    db.session.commit()
+    if form.validate_on_submit():
+        new_document = DocumentModel(
+            username=form.username.data,
+            content=form.content.data,
+        )
 
-    return redirect(url_for('document'))
+        db.session.add(new_document)
+        db.session.commit()
+
+        return redirect(url_for('document'))
+
+    return render_template('document_add.html', form=form)

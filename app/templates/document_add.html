@@ -1,0 +1,34 @@
+{% extends 'templates.html' %}
+
+{% block content %}
+  <h1>SMTM 글 추가</h1>
+
+  <div class="ui grid">
+    <div class="row">
+      <div class="column">
+        <form action="{{ request.url }}" method="POST" class="ui form">
+          {{ form.csrf_token }}
+
+          <div class="{% if form.errors['username'] %}error{% endif %} field">
+            <div class="ui transparent huge fluid input">
+              {{ form.username(placeholder="사용자 이름을 입력해주세요", autofocus="true") }}
+            </div>
+          </div>
+
+          <div class="{% if form.errors['content'] %}error{% endif %} field">
+            <div class="ui form">
+              <div class="field">
+                <label>내용을 입력해주세요</label>
+                {{ form.content(placeholder="내용을 입력해주세요") }}
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="fluid ui primary button" style="margin:0.5em 0em">제출하기</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

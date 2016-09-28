@@ -23,19 +23,12 @@ class DocumentModel(db.Model):
         String(80),
         nullable=False
     )
-    title = Column(
-        String(250),
-        nullable=False
-    )
     content = db.Column(
         LONGTEXT,
         nullable=False
     )
     category = db.Column(
-        SET(*category_enum),
-        default=category_enum[0],
-        server_default=category_enum[0],
-        nullable=False
+        SET(*category_enum)
     )
     created_date = Column(
         TIMESTAMP,
