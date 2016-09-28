@@ -1,1 +1,2 @@
-__all__ = ['category']
+__all__ = ['category',
+           'document']
