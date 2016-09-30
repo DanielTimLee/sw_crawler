@@ -11,3 +11,7 @@ from app.models import *
 db.create_all()
 
 from app.routes import *
+
+from flask_wtf.csrf import CsrfProtect
+
+CsrfProtect(app)

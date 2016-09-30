@@ -1,8 +1,8 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import StringField, validators
 
 
-class CategoryForm(Form):
+class CategoryForm(FlaskForm):
     name = StringField('name', [
         validators.DataRequired(message='카테고리 name을 입력해 주세요. 반드시 영어로 입력해주세요.'),
     ])
