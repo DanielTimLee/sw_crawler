@@ -1,7 +1,9 @@
 class Fb_config():
     def __init__(self, target):
         self.target = target
-
+        # TODO : 항상 타겟이 이렇게 세팅되지 않음. profile.php?id=<int> 이렇게 붙기도 함
+        # 이럴때는 sk=likes 이렇게 붙음.
+        # maps에서 이미 다 출력했는데 아무 메시지가 나오지 않을 때도 있음.
         self.base_url = "https://www.facebook.com/" + target
 
         # TODO: 너무 self 많이 썼는데 사용하지 않고 할 수 있는 방법 찾기
