@@ -1,6 +1,6 @@
 from app import app
 from crawler.crawler_init import smtm_crawler
-
+from flask import jsonify
 
 @app.route('/crawler/<string:target>')
 def crawler(target):
@@ -9,6 +9,7 @@ def crawler(target):
                      target)
     a.init()
     a.signin()
-    a.start()
+    c = a.start()
 
-    return "hi"
+    return jsonify(c)
+

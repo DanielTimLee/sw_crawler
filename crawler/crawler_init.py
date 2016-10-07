@@ -38,14 +38,23 @@ class smtm_crawler():
         print("로그인에 성공했습니다")
 
     def start(self):
+        data={}
         for key, value in self.config.url_list.items():
             if self.__access_target(value[0], value[1]):
                 self.__scroll_end()
                 print("글을 긁는 중입니다.")
-                a = self.driver.find_elements_by_css_selector(value[2])
-                for i in a:
-                    print(i.text)
+                posts = self.driver.find_elements_by_css_selector(value[2])
+
+                text_data = ''
+
+                for post in posts:
+                    text_data = text_data + post.text
+
+                data[key] = text_data
+
         print("페이스북 스크롤이 모두 완료되었습니다.")
+        self.driver.close()
+        return data
 
     def __access_target(self, scope, scope_url):
         print(self.target + " " + scope + " 에 접근 중입니다")
