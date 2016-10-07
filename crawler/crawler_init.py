@@ -42,7 +42,7 @@ class smtm_crawler():
     def start(self):
         data={}
         for key, value in self.config.url_list.items():
-            access = yield from self.__access_target(value[0], value[1])
+            access = yield from self.__access_target(key, value[0], value[1])
             if access:
                 yield from self.__scroll_end()
                 yield("글을 긁는 중입니다.<br/>")
@@ -59,20 +59,20 @@ class smtm_crawler():
         self.driver.close()
         # return data
 
-    def __access_target(self, scope, scope_url):
+    def __access_target(self, key, scope, scope_url):
         yield(self.target + " " + scope + " 에 접근 중입니다.<br/>")
 
         self.driver.get(scope_url)
         self.driver.implicitly_wait(3)
 
         # TODO : 로깅 모듈 사용
-        if self.driver.current_url == scope_url:
+        if key in self.driver.current_url:
             return True
-        elif self.driver.current_url != scope_url:
-            yield("Warning : 회원이 해당 내용을 공개하지 않았습니다.<br/>")
-            return False
         elif self.driver.title == "페이지를 찾을 수 없음":
             yield("Error : 페이지를 찾을 수 없음.<br/>")
+            return False
+        elif key not in self.driver.current_url:
+            yield("Warning : 회원이 해당 내용을 공개하지 않았습니다.<br/>")
             return False
 
     def __scroll_wait(self):
@@ -83,8 +83,9 @@ class smtm_crawler():
         # TODO : Try Catch 안하고 사용할 수 있는 셀레늄 함수 찾아보기
         try:
             if self.config.NOT_FOUND_TEXT in self.driver. \
-                find_elements_by_css_selector(self.config.NOT_FOUND_CLASS).text:
+                find_element_by_css_selector(self.config.NOT_FOUND_CLASS).text:
                 yield("결과가 존재하지 않습니다.<br/>")
+                return False
         except:
             pass
 

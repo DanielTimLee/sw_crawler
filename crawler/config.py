@@ -40,11 +40,11 @@ class Fb_config():
             # "timeline": ["타임라인", self.base_url,self.TIMELINE_CLASS],
             # 사용자 정보 항목
             # "profile": ["프로필", self.base_url + '/about'],
-            "like": ["좋아요", self.base_url + '/likes', self.LIKE_CLASS],
-            "map": ["체크인", self.base_url + '/map', self.MAP_CLASS],
-            "event": ["이벤트", self.base_url + '/events', self.EVENT_CLASS],
-            "group": ["그룹", self.base_url + '/groups', self.GROUP_CLASS],
+            "likes": ["좋아요", self.base_url + '?sk=likes', self.LIKE_CLASS],
+            "map": ["체크인", self.base_url + '?sk=map', self.MAP_CLASS],
+            "events": ["이벤트", self.base_url + '?sk=events', self.EVENT_CLASS],
+            "groups": ["그룹", self.base_url + '?sk=groups', self.GROUP_CLASS],
             # movie & book are watched event.
-            "movie": ["영화", self.base_url + '/video_movies_watch', self.MOVIE_CLASS],
-            "book": ["책", self.base_url + '/books_read', self.BOOK_CLASS]
+            "movies": ["영화", self.base_url + '?sk=video_movies_watch', self.MOVIE_CLASS],
+            "books": ["책", self.base_url + '?sk=books_read', self.BOOK_CLASS]
         }
