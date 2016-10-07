@@ -1,0 +1,25 @@
+{% extends 'templates.html' %}
+
+{% block content %}
+<h1>SMTM 크롤링 봇</h1>
+
+  <div class="ui grid">
+    <div class="row">
+      <div class="column">
+        <form action="{{ request.url }}" method="POST" class="ui form">
+          {{ form.csrf_token }}
+
+          <div class="{% if form.errors['target'] %}error{% endif %} field">
+            <div class="ui transparent huge fluid input">
+              {{ form.target(placeholder="Target을 입력해주세요") }}
+            </div>
+          </div>
+
+          <button type="submit" class="fluid ui primary button" style="margin:0.5em 0em">제출하기</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+

@@ -21,7 +21,7 @@ def category():
     })
 
 
-@app.route('/category/add')
+@app.route('/category/add', methods=['GET', 'POST'])
 def category_add():
     form = CategoryForm()
 

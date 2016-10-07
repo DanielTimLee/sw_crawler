@@ -1,6 +1,5 @@
 click==6.6
 ecdsa==0.13
-Fabric3==1.12.post1
 Flask==0.11.1
 Flask-SQLAlchemy==2.1
 Flask-WTF==0.13
@@ -15,3 +14,4 @@ six==1.10.0
 SQLAlchemy==1.0.15
 Werkzeug==0.11.11
 WTForms==2.1
+
